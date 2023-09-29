@@ -63,7 +63,7 @@ Example commands:
 
 ```sh
   cd my-folder
-  git clone https://github.com/supreeti/bookstore-app.git
+  git clone https://github.com/supreeti/BlogApp-ROR.git
 ```
 ### Install
 
@@ -111,7 +111,7 @@ Example command:
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/supreeti/bookstore-app/issues/new).
+Feel free to check the [issues page](https://github.com/supreeti/BlogApp-ROR/issues/new).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -134,7 +134,7 @@ I would like to thank to my coding partner and Microverse for support..
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](https://github.com/supreeti/bookstore-app/blob/main/LICENSE) licensed.
+This project is [MIT](https://github.com/supreeti/BlogApp-ROR/blob/main/LICENSE) licensed.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
