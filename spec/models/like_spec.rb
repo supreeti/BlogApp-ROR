@@ -15,10 +15,10 @@ RSpec.describe Like, type: :model do
     it 'increments the post\'s like_counter after save' do
       user = create(:user)
       post = create(:post)
-      expect {
-        Like.create(user: user, post_id: post.id)
+      expect do
+        Like.create(user:, post_id: post.id)
         post.reload
-      }.to change { post.like_counter }.by(1)
+      end.to change { post.like_counter }.by(1)
     end
   end
 end
