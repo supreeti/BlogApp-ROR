@@ -1,3 +1,4 @@
+require 'factory_bot_rails'
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do

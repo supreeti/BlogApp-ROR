@@ -1,57 +1,42 @@
+# spec/models/post_spec.rb
+
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  let(:user) { User.create(name: 'Supreeti') }
-
   describe 'validations' do
-    it 'should be valid with valid attributes' do
-      post = user.posts.build(title: 'Test Post')
-      expect(post).to be_valid
-    end
+    it { should validate_presence_of(:title) }
+    it { should validate_length_of(:title).is_at_least(5).is_at_most(250) }
+    it { should validate_numericality_of(:comment_counter).is_greater_than_or_equal_to(0).only_integer }
+    it { should validate_numericality_of(:like_counter).is_greater_than_or_equal_to(0).only_integer }
+  end
 
-    it 'should be invalid without a title' do
-      post = user.posts.build(title: nil)
-      expect(post).to_not be_valid
-    end
+  describe 'associations' do
+    it { should belong_to(:author).class_name('User').with_foreign_key('author_id') }
+    it { should have_many(:likes).with_foreign_key('post_id') }
+    it { should have_many(:comments).with_foreign_key('post_id') }
+  end
 
-    it 'should be invalid with a title exceeding 250 characters' do
-      long_title = 'a' * 251
-      post = user.posts.build(title: long_title)
-      expect(post).to_not be_valid
-    end
-
-    it 'should have a comments_counter greater than or equal to 0' do
-      post = user.posts.build(title: 'Test Post', comments_counter: -1)
-      expect(post).to_not be_valid
-      post.comments_counter = 0
-      expect(post).to be_valid
-    end
-
-    it 'should have a likes_counter greater than or equal to 0' do
-      post = user.posts.build(title: 'Test Post', likes_counter: -1)
-      expect(post).to_not be_valid
-      post.likes_counter = 0
-      expect(post).to be_valid
-    end
+  describe 'callbacks' do
+    it { should callback(:update_posts_counter).after(:save) }
   end
 
   describe '#recent_comments' do
-    it 'returns the specified number of most recent comments' do
-      post = user.posts.create(title: 'Test Post')
-      post.comments.create(text: 'Comment 1', author: user)
-      comment2 = post.comments.create(text: 'Comment 2', author: user)
-      comment3 = post.comments.create(text: 'Comment 3', author: user)
+    let(:post) { create(:post) }
 
-      recent_comments = post.recent_comments(2)
-      expect(recent_comments).to eq([comment3, comment2])
+    it 'returns the most recent comments' do
+      comment1 = create(:comment, post: post, created_at: 1.hour.ago)
+      comment2 = create(:comment, post: post, created_at: 2.hours.ago)
+
+      expect(post.recent_comments(2)).to eq([comment1, comment2])
     end
   end
 
-  describe 'after_save callback' do
-    it 'increments author\'s posts_counter after saving' do
-      expect do
-        user.posts.create(title: 'Test Post')
-      end.to change { user.reload.posts_counter }.by(1)
+  describe '#update_posts_counter' do
+    let(:author) { create(:user) }
+    let(:post) { create(:post, author: author) }
+
+    it 'increments the author\'s post_counter' do
+      expect { post.save }.to change { author.reload.post_counter }.by(1)
     end
   end
 end
