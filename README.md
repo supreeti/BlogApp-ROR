@@ -1,38 +1,20 @@
-# README
+<h1>BlogApp-ROR</h1>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-# bookstore-app
-This project is about Online Bookstore using React.
+<a name="readme-top"></a>
 
 <!-- TABLE OF CONTENTS -->
 
-# 📗 Table of Contents <a name="readme-top"></a>
+# 📗 Table of Contents
 
 - [📖 About the Project](#about-project)
   - [🛠 Built With](#built-with)
-  - [🚀 Live Demo](#live-demo)
+    - [Tech Stack](#tech-stack)
+    - [Key Features](#key-features)
 - [💻 Getting Started](#getting-started)
-- [Install](#install)
+  - [Setup](#setup)
+  - [Prerequisites](#prerequisites)
+  - [Install](#install)
+  - [Test](#run-test)
 - [👥 Authors](#authors)
 - [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
@@ -41,13 +23,32 @@ This project is about Online Bookstore using React.
 - [📝 License](#license)
 
 <!-- PROJECT DESCRIPTION -->
- 
+
+# 📖 BlogApp-ROR <a name="about-project"></a>
+
+The BlogAppROR is about a blog website which is fully functional website that will show the list of posts and empower readers to interact with them by adding comments and liking posts.
+
+
 ## 🛠 Built With <a name="built-with"></a>
 
-- Html
-- CSS
-- Javascript ES6
-- React
+### Tech Stack <a name="tech-stack"></a>
+
+- <a href="https://www.postgresql.org/">PostgreSQL</a>
+- <a href="https://rubyonrails.org/">Ruby on Rails</a>
+
+<!-- Features -->
+
+### Key Features <a name="key-features"></a>
+
+Key features of the application.
+
+- Creating a data model
+- Validations and Model specs
+- Processing data in models
+- Setup and controllers**
+- Controllers specs
+- Views
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 
@@ -55,31 +56,37 @@ This project is about Online Bookstore using React.
 
 To get a local copy up and running, follow these steps.
 
+### Prerequisites
+
+In order to run this project you need:
+
+- PostgreSQL.
+- Code Editor.
+- Ruby On Rails.
+
 ### Setup
 
 Clone this repository to your desired folder:
 
-Example commands:
-
 ```sh
   cd my-folder
-  git clone https://github.com/supreeti/BlogApp-ROR.git
+  gh repo clone https://github.com/supreeti/BlogApp-ROR.git
 ```
+
 ### Install
 
-Install this project with:
-
-Example command:
-
-```sh
-  cd my-project
-```
+- Install <a href="https://www.postgresql.org/">PostgreSQL</a>.
+- Install <a href="https://rubyonrails.org/">Ruby On Rails</a>.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- AUTHORS -->
+### Run Test
+To run the testing, execute the following command:
+```
+rspec spec --format documentation
+```
 
-## 👥 Authors <a name="authors"></a>
+<!-- AUTHORS -->
 
 👤 **Supreeti**
 
@@ -87,21 +94,15 @@ Example command:
 - Twitter: [@Ksupreeti](https://twitter.com/Ksupreeti)
 - LinkedIn: [Supreeti](https://www.linkedin.com/in/supreeti-kushwaha-23336232/)
 
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-<!--  FEATURES -->
-
-## 🔭  Key Features <a name="features"></a>
-
-- [ 1] **[More interactive using Javascript]**
-- [ 2] **[Responsive Website]**
-
 <!-- FUTURE FEATURES -->
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ 1] **[Registration page]**
-- [ 2] **[Login page]**
+Features will be added to the project.
+
+- **User Login Interface**
+- **User comments and like history**
+- **Report of individual user**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -110,16 +111,15 @@ Example command:
 ## 🤝 Contributing <a name="contributing"></a>
 
 Contributions, issues, and feature requests are welcome!
-
-Feel free to check the [issues page](https://github.com/supreeti/BlogApp-ROR/issues/new).
+Feel free to check the <a href="https://github.com/supreeti/BlogApp-ROR/issues">Issues</a>.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- SUPPORT -->
 
-## ⭐️ Show your support by giving me ratings <a name="support"></a>
+## ⭐️ Show your support <a name="support"></a>
 
-If you like this project please give me ratings ...
+If you like this project, show your support by giving the project a ⭐️.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -127,14 +127,14 @@ If you like this project please give me ratings ...
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-I would like to thank to my coding partner and Microverse for support..
+I would like to thank Microverse.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- LICENSE -->
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](https://github.com/supreeti/BlogApp-ROR/blob/main/LICENSE) licensed.
+This project is [MIT](./LICENSE) licensed.
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
