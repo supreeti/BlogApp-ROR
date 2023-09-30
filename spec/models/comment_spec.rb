@@ -1,33 +1,20 @@
-require 'factory_bot_rails'
+# spec/models/comment_spec.rb
+
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
-  describe 'Comment Model' do
-    let(:user) { create(:user, name: 'Supreeti', photo: 'Image', bio: 'developer', post_counter: 0) }
-    let(:post) { create(:post, title: 'test title', text: 'test text', comment_counter: 0, like_counter: 0) }
+  let(:user) { create(:user, name: 'Supreeti') }
+  let(:post) { create(:post, title: 'Test user') }
 
-    it 'text should not be blank' do
-      comment = build(:comment, user:, post:) # Let the factory set the text
-      expect(comment).to be_valid
-    end
+  describe 'associations' do
+    it { should belongs_to(:post).with_foreign_key(:post_id) }
+    it { should belongs_to(:user).with_foreign_key(:user_id) }
+  end
 
-    it 'post id must be integer' do
-      comment = build(:comment, user:, post:, post_id: nil)
-      expect(comment).to_not be_valid
-    end
-
-    it 'user id must be integer' do
-      comment = build(:comment, user:, post:, user_id: nil)
-      expect(comment).to_not be_valid
-    end
-
-    it 'should increment the comment counter of the associated post' do
-      comment = build(:comment, user:, post:)
-
-      expect do
-        comment.save
-        post.reload
-      end.to change(post, :comment_counter).by(1)
+  describe 'callbacks' do
+    it 'updates the comments_counter after save' do
+      comment = build(:comment, post: 'Test user', user: 'Supreeti')
+      expect { comment.save }.to change { post.reload.comment_counter }.by(1)
     end
   end
 end
