@@ -1,10 +1,13 @@
-# frozen_string_literal: true
-
 class Post < ApplicationRecord
-  belongs_to :users
+  belongs_to :author, class_name: 'User'
 
   has_many :comments
   has_many :likes
+
+  attribute :title, :string
+  attribute :text, :text
+  attribute :comments_counter, :integer, default: 0
+  attribute :likes_counter, :integer, default: 0
 
   def recent_comments
     comments.order('created_at Desc').limit(5)
@@ -15,6 +18,6 @@ class Post < ApplicationRecord
   private
 
   def update_post_counter
-    user.increment!(:PostsCounter)
+    author.increment!(:PostsCounter)
   end
 end
