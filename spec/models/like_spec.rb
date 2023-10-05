@@ -6,17 +6,18 @@ RSpec.describe Like, type: :model do
 
   describe 'validations' do
     it 'should be valid with valid attributes' do
-      like = Like.create(user:, post_id: post.id)
+      like = Like.create(user: user, post: post)
       expect(like).to be_valid
     end
   end
 
   describe 'callbacks' do
     it 'increments the post\'s like_counter after save' do
-      user = create(:user)
-      post = create(:post)
+      user = create(:user) # Make sure FactoryBot is set up correctly
+      post = create(:post) # Make sure FactoryBot is set up correctly
+
       expect do
-        Like.create(user:, post_id: post.id)
+        Like.create(user: user, post: post)
         post.reload
       end.to change { post.like_counter }.by(1)
     end
