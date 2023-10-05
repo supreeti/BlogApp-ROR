@@ -6,7 +6,7 @@ RSpec.describe Comment, type: :model do
 
   describe 'callbacks' do
     it 'updates the comments_counter after save' do
-      comment = build(:comment, post: post, user: user) # Use the post and user objects
+      comment = build(:comment, post:, user:) # Use the post and user objects
       expect { comment.save }.to change { post.reload.comment_counter }.by(1)
     end
   end

@@ -6,7 +6,7 @@ RSpec.describe Like, type: :model do
 
   describe 'validations' do
     it 'should be valid with valid attributes' do
-      like = Like.create(user: user, post: post)
+      like = Like.create(user:, post:)
       expect(like).to be_valid
     end
   end
@@ -17,7 +17,7 @@ RSpec.describe Like, type: :model do
       post = create(:post) # Make sure FactoryBot is set up correctly
 
       expect do
-        Like.create(user: user, post: post)
+        Like.create(user:, post:)
         post.reload
       end.to change { post.like_counter }.by(1)
     end
