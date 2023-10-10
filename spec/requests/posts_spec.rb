@@ -30,7 +30,7 @@ RSpec.describe 'Posts', type: :request do
     end
 
     it 'returns a successful response' do
-        expect(response).to have_http_status(:success)
+      expect(response).to have_http_status(:success)
     end
 
     it 'renders the show template' do
