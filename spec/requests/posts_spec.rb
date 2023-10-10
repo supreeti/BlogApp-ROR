@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Posts', type: :request do
-  describe 'GET /users/:user_id/posts' do
+  describe 'GET /index/:user_id/posts' do
     let(:user) { User.create(name: 'Test User') }
 
     before do
@@ -12,16 +12,16 @@ RSpec.describe 'Posts', type: :request do
       expect(response).to have_http_status(200)
     end
 
-    it 'renders the index template' do
+    it 'returns the index template' do
       expect(response).to render_template(:index)
     end
 
-    it 'includes the list of posts for the selected user in the response body' do
+    it 'includes correct placeholder text in the response body' do
       expect(response.body).to include('List of post for selected User')
     end
   end
 
-  describe 'GET /users/:user_id/posts/:id' do
+  describe 'GET /show/:user_id/posts/:id' do
     let(:user) { User.create(name: 'Test User') }
     let(:post) { user.posts.create(title: 'Test Post', text: 'Test Content') }
 
@@ -33,11 +33,11 @@ RSpec.describe 'Posts', type: :request do
       expect(response).to have_http_status(:success)
     end
 
-    it 'renders the show template' do
+    it 'returns the show template' do
       expect(response).to render_template(:show)
     end
 
-    it 'includes the selected post title in the response body' do
+    it 'includes correct placeholder text in the response body' do
       expect(response.body).to include('Selected post for a user')
     end
   end

@@ -1,41 +1,43 @@
 require 'rails_helper'
 
 RSpec.describe 'Users', type: :request do
-  describe 'GET /users' do
-    before do
-      User.create(name: 'Test User')
-      get users_path
-    end
-
+  describe 'GET /index' do
     it 'returns a successful response' do
-      expect(response).to have_http_status(200)
+      get users_path
+      expect(response).to have_http_status(:success)
     end
 
-    it 'renders the user index template' do
+    it 'returns the index template' do
+      get users_path
+      expect(response).to have_http_status(:success)
       expect(response).to render_template(:index)
     end
 
-    it 'includes the list of users in the response body' do
+    it 'includes correct placeholder text in the response body' do
+      get users_path
+      expect(response).to have_http_status(:success)
       expect(response.body).to include('List of Users')
     end
   end
 
-  describe 'GET /users/:id' do
-    let(:user) { User.create(name: 'Test User') }
-
-    before do
-      get user_path(user)
-    end
-
-    it 'returns a successful response' do
+  describe 'GET /show' do
+    it 'renders a successful response' do
+      user = create(:user)
+      get user_path(id: user.id)
       expect(response).to have_http_status(:success)
     end
 
-    it 'renders the show template' do
+    it 'returns the show template' do
+      user = create(:user)
+      get user_path(id: user.id)
+      expect(response).to have_http_status(:success)
       expect(response).to render_template(:show)
     end
 
-    it 'includes the selected user name in the response body' do
+    it 'includes correct placeholder text in the response body' do
+      user = create(:user)
+      get user_path(id: user.id)
+      expect(response).to have_http_status(:success)
       expect(response.body).to include('Selected User')
     end
   end
