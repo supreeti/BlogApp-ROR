@@ -1,12 +1,13 @@
 <h1>List of post for selected User</h1>
 <%# user card %>
 <a href="#">
-  <%= render partial: 'partials/users', locals: { user: @users } %>
+  <%= render partial: 'partials/users', locals: { user: @user } %>
 </a>
 
 <div class="btn">
   <p class="btn"><%= link_to "Add Post", new_user_post_path %><p>
 </div>
+
 <%# post card %>
 <% @posts.each do |post| %>
   <a href="/users/<%= post.author_id%>/posts/<%= post.id%>">
@@ -15,16 +16,20 @@
   <%# comment card %>
 
   <div class="comments">
-    <ul>
-      <% post.recent_comments.each do |comment| %>
-        <li>
-          <%= render partial: 'partials/comment', locals: { comment: comment } %>
-        </li>
-      <% end %>
-    </ul>
+    <% if post.recent_comments.any? %>
+      <ul>
+        <% post.recent_comments.each do |comment| %>
+          <li>
+            <%= render partial: 'partials/comment', locals: { comment: comment } %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No recent comments found.</p>
+    <% end %>
   </div>
 <% end %>
 
 <div class="btn">
-  <button type="button" class="button_center">Select Post</button>
+  <button type="button" class="button_center">Pagination</button>
 </div>

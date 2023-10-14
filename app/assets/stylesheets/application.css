@@ -132,3 +132,20 @@ li {
   display: flex;
   align-items: flex-start;
 }
+
+.post-desc {
+  text-decoration: none;
+  color: black;
+  padding: 0 10px;
+}
+
+.user-post-partial {
+  margin: 10px 0;
+}
+
+.user-post-counter {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px;
+}

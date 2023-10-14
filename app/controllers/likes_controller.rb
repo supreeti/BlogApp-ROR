@@ -1,22 +1,27 @@
 class LikesController < ApplicationController
-  before_action :current_user
+  before_action :set_post
 
   def new
     @like = Like.new
   end
 
   def create
-    @post = Post.find(params[:post_id])
-    @like = Like.new(user_id: current_user.id, post_id: @post.id)
+    @like = Like.new
     @like.post = @post
     @like.user = current_user
 
     if @like.save
-      flash[:notice] = 'Like was successfully done.'
-      redirect_to '/'
+      flash[:notice] = 'Like was successfully created.'
+      redirect_to user_post_path(@like.post.author_id, @like.post.id)
     else
-      flash.now[:error] = 'Oops, try again'
+      flash.now[:error] = 'Oops, something went wrong'
       render :new
     end
+  end
+
+  private
+
+  def set_post
+    @post = Post.find(params[:post_id])
   end
 end
