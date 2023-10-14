@@ -20,8 +20,8 @@ class PostsController < ApplicationController
       author: @user,
       title: params[:post][:title],
       text: params[:post][:text],
-      comments_counter: 0,
-      likes_counter: 0
+      comment_counter: 0,
+      like_counter: 0
     )
 
     if @post.save
