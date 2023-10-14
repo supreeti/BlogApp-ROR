@@ -24,6 +24,7 @@
   </div>
 
   <div class="comments">
+    <p>Comments: <%= @count %></p>
     <ul>
       <% @post.recent_comments.each do |comment| %>
         <li>
