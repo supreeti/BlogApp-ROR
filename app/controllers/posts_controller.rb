@@ -25,8 +25,8 @@ class PostsController < ApplicationController
     )
 
     if @post.save
-      flash.now[:error] = 'Post was successfully created.'
-      redirect_to user_posts_path(@user)
+      flash.now[:success] = 'Post was successfully created.'
+      redirect_to user_posts_path(@post)
     else
       flash.now[:error] = 'Oops, something went wrong'
       render :new

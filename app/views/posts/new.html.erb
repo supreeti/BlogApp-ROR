@@ -1,5 +1,4 @@
-<h1>New Post</h1>
-<div class="posts">
+<div class="post">
   <h1>Create New Post</h1>
   <%= form_with(model: [@user, @post], url: user_posts_path(@user)) do |f| %>
     <div class="f-post">
@@ -17,4 +16,3 @@
     </div>
   <% end %>
 </div>
-
