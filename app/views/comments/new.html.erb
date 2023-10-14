@@ -1,0 +1,13 @@
+<div class="comments new_comment">
+  <h1>Add Comments</h1>
+  <%= form_with model: @comment, url: user_post_comments_path do |f| %>
+    <div class="post_label">
+      <%= f.label :text%>
+      <%= f.text_area :text, class: 'post_input', cols: 25, rows: 5, required: true %><br>
+    </div>
+
+    <div class="btn">
+      <%= f.submit "Submit Comment", class: "btn" %>
+    </div>
+  <% end %>
+</div>
