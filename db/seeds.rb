@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+first_user = User.create(name: 'Tom', photo: 'https://placehold.co/200x133', bio: 'Teacher from Mexico.', post_counter: 0)
+second_user = User.create(name: 'Lilly', photo: 'https://placehold.co/200x133', bio: 'Teacher from Poland.', post_counter: 0)
+
+first_post = Post.create(author: first_user, title: 'Hello', text: 'This is my first post', comment_counter: 0, like_counter: 0)
+Post.create(author: first_user, title: 'Hello', text: 'This is my first post', comment_counter: 0, like_counter: 0)
+second_post = Post.create(author: second_user, title: 'Hi Word!', text: 'Lets talk', comment_counter: 0, like_counter: 0)
+
+Comment.create(text: 'Hi Tom!' )
+Comment.create(text: 'Hi Lili!' )
