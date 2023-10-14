@@ -7,8 +7,7 @@ class PostsController < ApplicationController
   def show
     @users = User.find(params[:user_id])
     @post = @users.posts.find(params[:id])
-    @current_user = current_user
-    @like = Like.new
+    @count = @post.comment_counter
   end
 
   def new
@@ -28,7 +27,7 @@ class PostsController < ApplicationController
 
     if @post.save
       flash.now[:notice] = 'Post was successfully done.'
-      redirect_to '/'
+      redirect_to user_post_path(user_id: current_user.id, id: @post.id)
     else
       flash.now[:error] = 'Oops, try again'
       render :new

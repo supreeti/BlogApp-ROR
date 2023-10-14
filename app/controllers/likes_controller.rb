@@ -1,11 +1,13 @@
 class LikesController < ApplicationController
+  before_action :current_user
 
   def new
     @like = Like.new
   end
 
   def create
-    @like = Like.new
+    @post = Post.find(params[:post_id])
+    @like = Like.new(user_id: current_user.id, post_id: @post.id)
     @like.post = @post
     @like.user = current_user
 
