@@ -1,11 +1,41 @@
 class PostsController < ApplicationController
   def index
-    @users = User.find(params[:user_id])
-    @posts = @users.posts
+    @user = User.find(params[:user_id])
+    @posts = @user.posts
   end
 
   def show
-    @users = User.find(params[:user_id])
-    @post = @users.posts.find(params[:id])
+    @user = User.find(params[:user_id])
+    @post = @user.posts.find(params[:id])
+  end
+
+  def new
+    @user = current_user
+    @post = @user.posts.build
+  end
+
+  def create
+    @user = current_user
+    @post = Post.new(
+      author: @user,
+      title: params[:post][:title],
+      text: params[:post][:text],
+      comment_counter: 0,
+      like_counter: 0
+    )
+
+    if @post.save
+      flash.now[:success] = 'Post was successfully created.'
+      redirect_to user_posts_path(@post)
+    else
+      flash.now[:error] = 'Oops, something went wrong'
+      render :new
+    end
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:title, :text)
   end
 end

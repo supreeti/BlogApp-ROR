@@ -15,3 +15,10 @@ second_post = Post.create(author: second_user, title: 'Hi Word!', text: 'Lets ta
 
 Comment.create(text: 'Hi Tom!' )
 Comment.create(text: 'Hi Lili!' )
+Comment.create(post: first_post, author: second_user, text: 'Hi Tom!' )
+Comment.create(post: first_post, author: second_user, text: 'Hi Tom!' )
+
+
+Like.create(post: second_post, author: first_user)
+Like.create(post: first_post, author: second_user)
+Like.create(post: first_post, author: first_user)
