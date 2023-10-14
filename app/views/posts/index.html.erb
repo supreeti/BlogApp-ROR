@@ -1,7 +1,7 @@
 <h1>List of post for selected User</h1>
 <%# user card %>
 <a href="#">
-  <%= render partial: 'partials/users', locals: { user: @user } %>
+  <%= render partial: 'partials/users', locals: { user: @users } %>
 </a>
 <%# post card %>
 <% @posts.each do |post| %>

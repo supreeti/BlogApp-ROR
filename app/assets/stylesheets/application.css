@@ -52,7 +52,7 @@ a:visited {
   align-items: center;
 }
 
-.flex-right {
+.likes {
   display: flex;
   text-align: right;
   flex-direction: row-reverse;
